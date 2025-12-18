@@ -998,9 +998,12 @@ body {
     }
 
     .holiday-greeting {
-        right: 12px;
-        bottom: 15px;
+        right: 50%;
+        transform: translateX(50%);
+        bottom: auto;
+        top: 65%;
         font-size: 1.1rem;
+        text-align: center;
     }
 
     /* Crisis Section Mobile */
