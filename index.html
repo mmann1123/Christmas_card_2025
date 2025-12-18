@@ -107,7 +107,7 @@
 
             <div class="impact-showcase">
                 <div class="impact-item">
-                    <div class="impact-cost">~$5,000</div>
+                    <div class="impact-cost">$2,500</div>
                     <div class="impact-result">Saves 1 Life</div>
                     <p>Through malaria prevention and treatment</p>
                 </div>
@@ -126,23 +126,37 @@
             <div class="calculator-box">
                 <h3>Calculate Your Impact</h3>
                 <div class="calculator">
-                    <label for="income">Your Annual Income ($)</label>
-                    <input type="number" id="income" placeholder="75000" value="75000">
+                    <div class="input-group">
+                        <label for="income">Your Annual Income</label>
+                        <div class="income-input-wrapper">
+                            <span class="currency-symbol">$</span>
+                            <input type="text" id="income" placeholder="150,000" value="150,000">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="percentage">Percentage to Give: <span id="percentage-display">1%</span></label>
+                        <input type="range" id="percentage" min="1" max="10" value="1" class="percentage-slider">
+                        <div class="slider-labels">
+                            <span>1%</span>
+                            <span>5%</span>
+                            <span>10%</span>
+                        </div>
+                    </div>
                     <div class="calc-results">
                         <div class="calc-item">
-                            <span class="calc-label">1% of Income:</span>
-                            <span class="calc-value" id="one-percent">$750</span>
+                            <span class="calc-label">Your Annual Donation:</span>
+                            <span class="calc-value" id="donation-amount">$1,500</span>
                         </div>
                         <div class="calc-item highlight">
                             <span class="calc-label">Lives You Could Save:</span>
-                            <span class="calc-value" id="lives-saved">~0.15 lives/year</span>
+                            <span class="calc-value" id="lives-saved">~0.6 lives/year</span>
                         </div>
                         <div class="calc-item">
                             <span class="calc-label">Malaria Nets Funded:</span>
-                            <span class="calc-value" id="nets-funded">250 nets</span>
+                            <span class="calc-value" id="nets-funded">500 nets</span>
                         </div>
                     </div>
-                    <p class="calc-note">Over 10 years of giving, you could save <strong id="ten-year-lives">1-2 lives</strong> directly.</p>
+                    <p class="calc-note">Over 10 years of giving, you could save <strong id="ten-year-lives">6 lives</strong> directly.</p>
                 </div>
             </div>
         </div>

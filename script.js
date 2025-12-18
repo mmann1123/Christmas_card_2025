@@ -66,33 +66,70 @@ function setupIntersectionObserver() {
 // Calculator functionality
 function setupCalculator() {
     const incomeInput = document.getElementById('income');
-    const onePercentEl = document.getElementById('one-percent');
+    const percentageSlider = document.getElementById('percentage');
+    const percentageDisplay = document.getElementById('percentage-display');
+    const donationAmountEl = document.getElementById('donation-amount');
     const livesSavedEl = document.getElementById('lives-saved');
     const netsFundedEl = document.getElementById('nets-funded');
     const tenYearLivesEl = document.getElementById('ten-year-lives');
 
-    function updateCalculations() {
-        const income = parseFloat(incomeInput.value) || 0;
-        const onePercent = income * 0.01;
-
-        // Cost to save a life through GiveWell top charities: ~$5,000
-        const costPerLife = 5000;
-        const livesSaved = onePercent / costPerLife;
-
-        // Malaria nets cost ~$3 each
-        const netCost = 3;
-        const nets = Math.floor(onePercent / netCost);
-
-        // Update display
-        onePercentEl.textContent = '$' + onePercent.toLocaleString(undefined, {
+    // Format number with commas
+    function formatCurrency(num) {
+        return '$' + num.toLocaleString(undefined, {
             minimumFractionDigits: 0,
             maximumFractionDigits: 0
         });
+    }
+
+    // Parse currency string to number (removes $ and commas)
+    function parseCurrency(str) {
+        return parseFloat(str.replace(/[$,]/g, '')) || 0;
+    }
+
+    // Format input value with commas as user types
+    function formatIncomeInput() {
+        const cursorPos = incomeInput.selectionStart;
+        const oldLength = incomeInput.value.length;
+        const rawValue = incomeInput.value.replace(/[^0-9]/g, '');
+        const numValue = parseInt(rawValue) || 0;
+
+        if (numValue > 0) {
+            incomeInput.value = numValue.toLocaleString();
+        } else {
+            incomeInput.value = '';
+        }
+
+        // Adjust cursor position for added/removed commas
+        const newLength = incomeInput.value.length;
+        const diff = newLength - oldLength;
+        incomeInput.setSelectionRange(cursorPos + diff, cursorPos + diff);
+    }
+
+    function updateCalculations() {
+        const income = parseCurrency(incomeInput.value);
+        const percentage = parseFloat(percentageSlider.value) / 100;
+        const donationAmount = income * percentage;
+
+        // Update percentage display
+        percentageDisplay.textContent = percentageSlider.value + '%';
+
+        // Cost to save a life through GiveWell top charities: ~$2,500
+        const costPerLife = 2500;
+        const livesSaved = donationAmount / costPerLife;
+
+        // Malaria nets cost ~$3 each
+        const netCost = 3;
+        const nets = Math.floor(donationAmount / netCost);
+
+        // Update display
+        donationAmountEl.textContent = formatCurrency(donationAmount);
 
         if (livesSaved >= 1) {
             livesSavedEl.textContent = '~' + livesSaved.toFixed(1) + ' lives/year';
+        } else if (livesSaved >= 0.1) {
+            livesSavedEl.textContent = '~' + livesSaved.toFixed(1) + ' lives/year';
         } else {
-            livesSavedEl.textContent = '~' + (livesSaved).toFixed(2) + ' lives/year';
+            livesSavedEl.textContent = '~' + livesSaved.toFixed(2) + ' lives/year';
         }
 
         netsFundedEl.textContent = nets.toLocaleString() + ' nets';
@@ -100,14 +137,22 @@ function setupCalculator() {
         // 10 year calculation
         const tenYearLives = livesSaved * 10;
         if (tenYearLives >= 1) {
-            tenYearLivesEl.textContent = Math.floor(tenYearLives) + '-' + Math.ceil(tenYearLives + 1) + ' lives';
+            tenYearLivesEl.textContent = Math.round(tenYearLives) + ' lives';
         } else {
             tenYearLivesEl.textContent = '~1 life';
         }
     }
 
-    if (incomeInput) {
-        incomeInput.addEventListener('input', updateCalculations);
+    if (incomeInput && percentageSlider) {
+        // Format income input on typing
+        incomeInput.addEventListener('input', () => {
+            formatIncomeInput();
+            updateCalculations();
+        });
+
+        // Update on slider change
+        percentageSlider.addEventListener('input', updateCalculations);
+
         // Initial calculation
         updateCalculations();
     }
