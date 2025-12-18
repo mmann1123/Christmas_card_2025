@@ -23,11 +23,16 @@
 
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
     color: var(--text);
     background: var(--light);
 }
@@ -870,10 +875,23 @@ body {
     margin-top: 16px;
 }
 
-/* Responsive */
+/* Responsive - Tablet */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+
     .hero {
         padding: 40px 0;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        padding: 0 10px;
     }
 
     .crisis-section,
@@ -883,6 +901,15 @@ body {
     .givewell-section,
     .cta-section {
         padding: 60px 0;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .section-intro {
+        font-size: 1rem;
+        padding: 0 10px;
     }
 
     .calculator-box,
@@ -898,6 +925,423 @@ body {
     .btn {
         width: 100%;
         max-width: 300px;
+    }
+
+    .death-counter-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .counter-card {
+        padding: 24px 20px;
+    }
+
+    .counter-number {
+        font-size: 2.5rem;
+    }
+
+    .info-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .impact-showcase {
+        grid-template-columns: 1fr;
+    }
+
+    .projection-timeline {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-item {
+        padding: 24px;
+    }
+
+    .research-quote {
+        padding: 20px;
+        font-size: 1rem;
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    /* Hero Mobile */
+    .hero {
+        min-height: 100svh; /* Use small viewport height for mobile browsers */
+        padding: 20px 0;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+        margin-bottom: 16px;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+    }
+
+    .scroll-indicator {
+        bottom: 80px;
+    }
+
+    .scroll-indicator span {
+        font-size: 0.8rem;
+    }
+
+    .arrow {
+        width: 18px;
+        height: 18px;
+    }
+
+    .holiday-greeting {
+        right: 12px;
+        bottom: 15px;
+        font-size: 1.1rem;
+    }
+
+    /* Crisis Section Mobile */
+    .crisis-section {
+        padding: 40px 0;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+    }
+
+    .section-intro {
+        font-size: 0.9rem;
+        margin-bottom: 32px;
+    }
+
+    .counter-card {
+        padding: 20px 16px;
+        border-radius: 16px;
+    }
+
+    .counter-icon {
+        font-size: 2rem;
+        margin-bottom: 8px;
+    }
+
+    .counter-number {
+        font-size: 2rem;
+    }
+
+    .counter-label {
+        font-size: 1rem;
+    }
+
+    .counter-description {
+        font-size: 0.85rem;
+    }
+
+    .total-deaths {
+        padding: 24px 16px;
+        border-radius: 16px;
+    }
+
+    .total-number {
+        font-size: 2.5rem;
+    }
+
+    .total-label {
+        font-size: 1rem;
+    }
+
+    /* Opportunity Section Mobile */
+    .opportunity-section {
+        padding: 40px 0;
+    }
+
+    .info-card {
+        padding: 24px 20px;
+        border-radius: 16px;
+    }
+
+    .card-number {
+        font-size: 2rem;
+    }
+
+    .card-label {
+        font-size: 0.8rem;
+    }
+
+    .info-card p {
+        font-size: 0.9rem;
+    }
+
+    .call-out-box {
+        padding: 24px 16px;
+        border-radius: 16px;
+    }
+
+    .call-out-box h3 {
+        font-size: 1.4rem;
+    }
+
+    .call-out-box p {
+        font-size: 1rem;
+    }
+
+    .call-out-box .emphasis {
+        font-size: 1.1rem;
+    }
+
+    /* Calculator Section Mobile */
+    .calculator-section {
+        padding: 40px 0;
+    }
+
+    .impact-item {
+        padding: 20px 16px;
+        border-radius: 16px;
+    }
+
+    .impact-cost {
+        font-size: 2rem;
+    }
+
+    .impact-result {
+        font-size: 1.1rem;
+    }
+
+    .calculator-box {
+        padding: 24px 16px;
+        border-radius: 16px;
+    }
+
+    .calculator-box h3 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+    }
+
+    .calculator label {
+        font-size: 0.9rem;
+    }
+
+    .calculator input[type="text"] {
+        padding: 14px 14px 14px 32px;
+        font-size: 1rem;
+    }
+
+    .currency-symbol {
+        font-size: 1rem;
+        left: 12px;
+    }
+
+    .percentage-slider {
+        height: 10px;
+    }
+
+    .percentage-slider::-webkit-slider-thumb {
+        width: 24px;
+        height: 24px;
+    }
+
+    .percentage-slider::-moz-range-thumb {
+        width: 24px;
+        height: 24px;
+    }
+
+    .slider-labels {
+        font-size: 0.75rem;
+    }
+
+    .calc-results {
+        padding: 16px;
+        border-radius: 10px;
+    }
+
+    .calc-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 4px;
+        padding: 10px 0;
+    }
+
+    .calc-label {
+        font-size: 0.85rem;
+    }
+
+    .calc-value {
+        font-size: 1.2rem;
+    }
+
+    .calc-item.highlight {
+        margin: 8px -8px;
+        padding: 12px 8px;
+    }
+
+    .calc-note {
+        font-size: 0.95rem;
+    }
+
+    /* Projections Section Mobile */
+    .projections-section {
+        padding: 40px 0;
+    }
+
+    .timeline-item {
+        padding: 20px 16px;
+        border-radius: 16px;
+    }
+
+    .timeline-year {
+        font-size: 0.85rem;
+    }
+
+    .timeline-stat {
+        font-size: 1.8rem;
+    }
+
+    .timeline-desc {
+        font-size: 0.9rem;
+    }
+
+    .research-quote {
+        padding: 16px;
+        font-size: 0.9rem;
+        border-radius: 0 12px 12px 0;
+    }
+
+    .research-quote cite {
+        font-size: 0.8rem;
+    }
+
+    /* GiveWell Section Mobile */
+    .givewell-section {
+        padding: 40px 0;
+    }
+
+    .givewell-info .lead {
+        font-size: 1rem;
+        margin-bottom: 24px;
+    }
+
+    .givewell-benefits li {
+        padding: 12px 0 12px 28px;
+        font-size: 0.9rem;
+    }
+
+    .givewell-benefits li:before {
+        font-size: 1rem;
+    }
+
+    .givewell-response {
+        padding: 20px 16px;
+        border-radius: 16px;
+    }
+
+    .givewell-response h4 {
+        font-size: 1rem;
+    }
+
+    .givewell-response li {
+        font-size: 0.9rem;
+        padding: 6px 0 6px 20px;
+    }
+
+    /* CTA Section Mobile */
+    .cta-section {
+        padding: 40px 0;
+    }
+
+    .cta-content h2 {
+        font-size: 1.6rem;
+    }
+
+    .cta-subtitle {
+        font-size: 1rem;
+        margin-bottom: 24px;
+    }
+
+    .cta-buttons {
+        margin-bottom: 32px;
+    }
+
+    .btn {
+        padding: 16px 24px;
+        font-size: 0.95rem;
+        max-width: 100%;
+    }
+
+    .cta-message {
+        padding: 20px 16px;
+        border-radius: 16px;
+        margin-bottom: 24px;
+    }
+
+    .cta-message p {
+        font-size: 0.95rem;
+    }
+
+    .cta-message .small {
+        font-size: 0.85rem;
+    }
+
+    .share-section {
+        padding-top: 24px;
+    }
+
+    .share-section p {
+        font-size: 0.9rem;
+    }
+
+    .share-buttons {
+        gap: 8px;
+    }
+
+    .share-btn {
+        padding: 10px 16px;
+        font-size: 0.8rem;
+    }
+
+    /* Footer Mobile */
+    .footer {
+        padding: 32px 0;
+    }
+
+    .footer p {
+        font-size: 0.9rem;
+    }
+
+    .footer-sources {
+        font-size: 0.8rem;
+    }
+
+    .disclaimer {
+        font-size: 0.75rem;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 1.5rem;
+    }
+
+    .counter-number {
+        font-size: 1.8rem;
+    }
+
+    .total-number {
+        font-size: 2rem;
+    }
+
+    .holiday-greeting {
+        font-size: 1rem;
+    }
+}
+
+/* Fix for iOS Safari viewport height */
+@supports (-webkit-touch-callout: none) {
+    .hero {
+        min-height: -webkit-fill-available;
     }
 }
 
