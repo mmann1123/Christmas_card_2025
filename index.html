@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Lives This Holiday Season | 1% Can Change Everything</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta property="og:title" content="Save Lives This Holiday Season">
+    <meta property="og:description" content="1% of your income can save hundreds of lives through high-impact giving.">
+    <meta property="og:type" content="website">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <h1 class="hero-title">This Holiday Season,<br><span class="highlight">Save Lives</span></h1>
+            <p class="hero-subtitle">A global health crisis is unfolding. You can help stop it.</p>
+            <div class="scroll-indicator">
+                <span>Learn More</span>
+                <div class="arrow"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Crisis Counter Section -->
+    <section class="crisis-section">
+        <div class="container">
+            <h2 class="section-title">The Human Cost of Aid Cuts</h2>
+            <p class="section-intro">Since January 2025, the dismantling of USAID has created a humanitarian catastrophe. These aren't just numbers&mdash;they're mothers, fathers, and children.</p>
+
+            <div class="death-counter-grid">
+                <div class="counter-card urgent">
+                    <div class="counter-icon">💔</div>
+                    <div class="counter-number" data-target="224070">0</div>
+                    <div class="counter-label">Adult Deaths</div>
+                    <p class="counter-description">Parents, workers, community leaders&mdash;gone</p>
+                </div>
+                <div class="counter-card critical">
+                    <div class="counter-icon">👶</div>
+                    <div class="counter-number" data-target="466008">0</div>
+                    <div class="counter-label">Child Deaths</div>
+                    <p class="counter-description">Children under 5 who will never grow up</p>
+                </div>
+                <div class="counter-card realtime">
+                    <div class="counter-icon">⏱️</div>
+                    <div class="counter-number live-counter">88</div>
+                    <div class="counter-label">Deaths Per Hour</div>
+                    <p class="counter-description">Right now. Every single hour.</p>
+                </div>
+            </div>
+
+            <div class="total-deaths">
+                <div class="total-number" data-target="690078">0</div>
+                <div class="total-label">Total Lives Lost So Far</div>
+            </div>
+
+            <p class="source-note">Source: <a href="https://www.impactcounter.com" target="_blank">ImpactCounter.com</a> & <a href="https://www.bu.edu/sph/news/articles/2025/tracking-anticipated-deaths-from-usaid-funding-cuts/" target="_blank">Boston University Research</a></p>
+        </div>
+    </section>
+
+    <!-- The Opportunity Section -->
+    <section class="opportunity-section">
+        <div class="container">
+            <h2 class="section-title">The Tax Cut Opportunity</h2>
+
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="card-header">
+                        <span class="card-number">1%</span>
+                        <span class="card-label">of Federal Taxes</span>
+                    </div>
+                    <p>USAID&mdash;the world's largest humanitarian aid program&mdash;cost Americans just <strong>1% of their federal taxes</strong>. Not 1% of income. Just 1% of taxes.</p>
+                </div>
+                <div class="info-card highlight-card">
+                    <div class="card-header">
+                        <span class="card-number">$70-80B</span>
+                        <span class="card-label">Annual Aid Budget</span>
+                    </div>
+                    <p>This funded <strong>malaria prevention, HIV treatment, childhood vaccines, and emergency nutrition</strong> for the world's poorest people.</p>
+                </div>
+                <div class="info-card">
+                    <div class="card-header">
+                        <span class="card-number">91M</span>
+                        <span class="card-label">Lives Saved (2001-2021)</span>
+                    </div>
+                    <p>US foreign aid prevented <strong>91 million deaths</strong> over two decades. That's roughly the population of Germany.</p>
+                </div>
+            </div>
+
+            <div class="call-out-box">
+                <h3>Here's the Opportunity</h3>
+                <p>The Trump tax cuts are putting money back in your pocket. <strong>What if you redirected just 1% of your income</strong> to continue the life-saving work that our government has abandoned?</p>
+                <p class="emphasis">Your tax savings could literally save thousands of lives.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Calculator Section -->
+    <section class="calculator-section">
+        <div class="container">
+            <h2 class="section-title">What Can 1% Do?</h2>
+            <p class="section-intro">Through GiveWell's top charities, your donation goes incredibly far.</p>
+
+            <div class="impact-showcase">
+                <div class="impact-item">
+                    <div class="impact-cost">~$5,000</div>
+                    <div class="impact-result">Saves 1 Life</div>
+                    <p>Through malaria prevention and treatment</p>
+                </div>
+                <div class="impact-item featured">
+                    <div class="impact-cost">$3</div>
+                    <div class="impact-result">1 Malaria Net</div>
+                    <p>Protects a family for 3+ years</p>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-cost">$1</div>
+                    <div class="impact-result">Deworming Treatment</div>
+                    <p>Improves child health & school attendance</p>
+                </div>
+            </div>
+
+            <div class="calculator-box">
+                <h3>Calculate Your Impact</h3>
+                <div class="calculator">
+                    <label for="income">Your Annual Income ($)</label>
+                    <input type="number" id="income" placeholder="75000" value="75000">
+                    <div class="calc-results">
+                        <div class="calc-item">
+                            <span class="calc-label">1% of Income:</span>
+                            <span class="calc-value" id="one-percent">$750</span>
+                        </div>
+                        <div class="calc-item highlight">
+                            <span class="calc-label">Lives You Could Save:</span>
+                            <span class="calc-value" id="lives-saved">~0.15 lives/year</span>
+                        </div>
+                        <div class="calc-item">
+                            <span class="calc-label">Malaria Nets Funded:</span>
+                            <span class="calc-value" id="nets-funded">250 nets</span>
+                        </div>
+                    </div>
+                    <p class="calc-note">Over 10 years of giving, you could save <strong id="ten-year-lives">1-2 lives</strong> directly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Projections -->
+    <section class="projections-section">
+        <div class="container">
+            <h2 class="section-title">If We Don't Act</h2>
+
+            <div class="projection-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">By End of 2025</div>
+                    <div class="timeline-stat">500,000 - 1,000,000</div>
+                    <div class="timeline-desc">Additional deaths if funding isn't restored</div>
+                </div>
+                <div class="timeline-item severe">
+                    <div class="timeline-year">By 2030</div>
+                    <div class="timeline-stat">14+ Million</div>
+                    <div class="timeline-desc">Projected additional deaths, including 4.5 million children under 5</div>
+                </div>
+            </div>
+
+            <blockquote class="research-quote">
+                "An estimated 91 million deaths were prevented between 2001 and 2021 in low- and middle-income countries thanks to programs supported by USAID."
+                <cite>&mdash; The Lancet, 2025</cite>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- Why GiveWell Section -->
+    <section class="givewell-section">
+        <div class="container">
+            <h2 class="section-title">Why GiveWell?</h2>
+
+            <div class="givewell-content">
+                <div class="givewell-info">
+                    <p class="lead">GiveWell is a nonprofit dedicated to finding the <strong>most effective charities</strong> in the world&mdash;organizations where your dollar saves the most lives.</p>
+
+                    <ul class="givewell-benefits">
+                        <li><strong>Rigorous Research:</strong> They analyze thousands of charities to find the top performers</li>
+                        <li><strong>Transparent:</strong> All research and cost-effectiveness analyses are public</li>
+                        <li><strong>Proven Impact:</strong> Their recommended charities have saved hundreds of thousands of lives</li>
+                        <li><strong>Emergency Response:</strong> GiveWell has already deployed $39 million to fill USAID gaps</li>
+                    </ul>
+
+                    <div class="givewell-response">
+                        <h4>GiveWell's Emergency Response to USAID Cuts</h4>
+                        <ul>
+                            <li>$12 million for malaria prevention</li>
+                            <li>$5 million for malaria treatment</li>
+                            <li>$6.2 million for technical assistance</li>
+                            <li>$2.96 million for malnutrition treatment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>This Holiday Season, Give the Gift of Life</h2>
+                <p class="cta-subtitle">Your 1% can fill the gap left by our government. Every dollar saves lives.</p>
+
+                <div class="cta-buttons">
+                    <a href="https://www.givewell.org/donate" class="btn btn-primary" target="_blank">
+                        Donate Through GiveWell
+                    </a>
+                    <a href="https://www.givewell.org/research/funding-cuts" class="btn btn-secondary" target="_blank">
+                        Learn More About the Crisis
+                    </a>
+                </div>
+
+                <div class="cta-message">
+                    <p>We're asking all our friends and family to consider pledging <strong>1% of your income</strong> to high-impact international development.</p>
+                    <p class="small">It's what USAID cost in taxes&mdash;but your direct donation goes even further.</p>
+                </div>
+
+                <div class="share-section">
+                    <p>Share this message:</p>
+                    <div class="share-buttons">
+                        <a href="https://twitter.com/intent/tweet?text=This%20holiday%20season%2C%20I%27m%20giving%201%25%20of%20my%20income%20to%20save%20lives%20through%20%40GiveWell.%20Join%20me%3F&url=" class="share-btn twitter" target="_blank">Twitter</a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=" class="share-btn facebook" target="_blank">Facebook</a>
+                        <a href="mailto:?subject=Save%20Lives%20This%20Holiday%20Season&body=Check%20out%20this%20important%20message%20about%20giving%201%25%20to%20save%20lives%3A%20" class="share-btn email">Email</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Created with love by friends who care about making a difference.</p>
+            <p class="footer-sources">
+                Data sources:
+                <a href="https://www.givewell.org/research/funding-cuts" target="_blank">GiveWell</a> |
+                <a href="https://www.impactcounter.com" target="_blank">Impact Counter</a> |
+                <a href="https://www.bu.edu/sph/news/articles/2025/tracking-anticipated-deaths-from-usaid-funding-cuts/" target="_blank">Boston University</a> |
+                <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(25)01186-9/fulltext" target="_blank">The Lancet</a>
+            </p>
+            <p class="disclaimer">This is a personal appeal from friends, not affiliated with any organization.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
