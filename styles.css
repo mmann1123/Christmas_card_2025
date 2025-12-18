@@ -1002,12 +1002,12 @@ body {
         transform: translateX(50%);
         bottom: auto;
         top: 65%;
-        font-size: 1.1rem;
+        font-size: 1.6rem;
         text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 4px;
+        gap: 6px;
     }
 
     .holiday-greeting .greeting-line {
@@ -1345,7 +1345,7 @@ body {
     }
 
     .holiday-greeting {
-        font-size: 1rem;
+        font-size: 1.4rem;
     }
 }
 
