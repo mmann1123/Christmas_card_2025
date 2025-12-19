@@ -1007,7 +1007,8 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 6px;
+        gap: 0;
+        line-height: 1.2;
     }
 
     .holiday-greeting .greeting-line {
