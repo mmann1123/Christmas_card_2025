@@ -119,14 +119,14 @@ body {
 
 /* Holiday Greeting */
 .holiday-greeting {
-    position: absolute;
-    bottom: 30px;
-    right: 40px;
     font-family: 'Alex Brush', cursive;
     font-size: clamp(1.5rem, 4vw, 2.5rem);
     color: rgba(255, 255, 255, 0.9);
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
     letter-spacing: 1px;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 60px;
 }
 
 .holiday-greeting em {
@@ -136,9 +136,9 @@ body {
 
 @media (max-width: 768px) {
     .holiday-greeting {
-        right: 20px;
-        bottom: 20px;
         font-size: 1.3rem;
+        margin-top: 30px;
+        margin-bottom: 40px;
     }
 }
 

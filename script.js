@@ -215,6 +215,23 @@ function setupAnimations() {
     });
 }
 
+// Scroll indicator click handler
+function setupScrollIndicator() {
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        scrollIndicator.style.cursor = 'pointer';
+        scrollIndicator.addEventListener('click', () => {
+            const nextSection = document.querySelector('.crisis-section');
+            if (nextSection) {
+                nextSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    }
+}
+
 // Share button functionality
 function setupShareButtons() {
     const pageUrl = encodeURIComponent(window.location.href);
@@ -251,6 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupCalculator();
     setupLiveCounter();
     setupSmoothScroll();
+    setupScrollIndicator();
     setupShareButtons();
 
     // Add loaded class to body for any CSS animations dependent on JS
