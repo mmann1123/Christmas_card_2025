@@ -234,8 +234,8 @@ function setupScrollIndicator() {
 
 // Share button functionality
 function setupShareButtons() {
-    const pageUrl = encodeURIComponent(window.location.href);
-    const pageTitle = encodeURIComponent(document.title);
+    const productionUrl = 'https://mmann1123.github.io/Christmas_card_2025/';
+    const pageUrl = encodeURIComponent(productionUrl);
 
     const twitterBtn = document.querySelector('.share-btn.twitter');
     const facebookBtn = document.querySelector('.share-btn.facebook');
@@ -245,7 +245,7 @@ function setupShareButtons() {
         const twitterText = encodeURIComponent(
             "This holiday season, I'm giving 1% of my income to save lives through @GiveWell. Join me?"
         );
-        twitterBtn.href = `https://twitter.com/intent/tweet?text=${twitterText}&url=${pageUrl}`;
+        twitterBtn.href = `https://x.com/intent/tweet?text=${twitterText}&url=${pageUrl}`;
     }
 
     if (facebookBtn) {
@@ -255,7 +255,7 @@ function setupShareButtons() {
     if (emailBtn) {
         const subject = encodeURIComponent("Save Lives This Holiday Season");
         const body = encodeURIComponent(
-            `Hi,\n\nI wanted to share something important with you. With recent cuts to foreign aid, millions of lives are at stake. But we can help.\n\nCheck out this page to learn more: ${window.location.href}\n\nI'm pledging 1% of my income to high-impact charities through GiveWell. Would you consider joining me?\n\nBest wishes`
+            `Hi,\n\nI wanted to share something important with you. With recent cuts to foreign aid, millions of lives are at stake. But we can help.\n\nCheck out this page to learn more: ${productionUrl}\n\nI'm pledging 1% of my income to high-impact charities through GiveWell. Would you consider joining me?\n\nBest wishes`
         );
         emailBtn.href = `mailto:?subject=${subject}&body=${body}`;
     }
