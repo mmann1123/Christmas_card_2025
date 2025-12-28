@@ -265,7 +265,7 @@ function setupShareButtons() {
 // Google Sheets published as web page - using the gviz JSON endpoint
 const GOOGLE_SHEETS_ID = '2PACX-1vSUdY1Sv0MtyMsTQythm31NWoAlx5Wvb-82wdIow3UBqv_ahH-gbqfkiNXUkamCnr-O8ulkoDUGJGla';
 const GOOGLE_SHEETS_URL = `https://docs.google.com/spreadsheets/d/e/${GOOGLE_SHEETS_ID}/pub?gid=1978313953&single=true&output=csv`;
-const GOOGLE_FORM_URL = null; // Will be set after Google Form setup
+const GOOGLE_FORM_URL = 'https://forms.gle/a86C1cyFw4VXS1dR8';
 
 function formatCurrencyDisplay(amount) {
     return '$' + parseInt(amount).toLocaleString();
@@ -353,63 +353,14 @@ async function loadDonors() {
     totalCommitted.textContent = formatCurrencyDisplay(total);
 }
 
-function setupPledgeModal() {
+function setupPledgeButton() {
     const pledgeBtn = document.getElementById('pledge-btn');
-    const modal = document.getElementById('pledge-modal');
-    const modalClose = document.getElementById('modal-close');
-    const pledgeForm = document.getElementById('pledge-form');
 
-    if (!pledgeBtn || !modal) return;
+    if (!pledgeBtn) return;
 
-    // Open modal
+    // Open Google Form directly
     pledgeBtn.addEventListener('click', () => {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    });
-
-    // Close modal
-    function closeModal() {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    modalClose.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-    });
-
-    // Handle form submission
-    pledgeForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const name = document.getElementById('pledge-name').value.trim();
-        const amount = document.getElementById('pledge-amount').value;
-
-        // Confirmation dialog
-        const confirmed = confirm(
-            `You're pledging to donate ${formatCurrencyDisplay(amount)} annually through GiveWell.\n\n` +
-            `Your name "${name}" and commitment will be displayed on this page.\n\n` +
-            `Do you confirm this pledge?`
-        );
-
-        if (confirmed) {
-            if (GOOGLE_FORM_URL) {
-                // If Google Form is configured, submit there
-                // This would typically open the form or submit via API
-                window.open(GOOGLE_FORM_URL + `?name=${encodeURIComponent(name)}&amount=${encodeURIComponent(amount)}`, '_blank');
-            } else {
-                // For now, show instructions
-                alert(
-                    `Thank you for your pledge!\n\n` +
-                    `To complete your commitment:\n` +
-                    `1. Donate through GiveWell: secure.givewell.org\n` +
-                    `2. Email the site owner to add your name to the list\n\n` +
-                    `Your generosity will save lives!`
-                );
-            }
-            closeModal();
-            pledgeForm.reset();
-        }
+        window.open(GOOGLE_FORM_URL, '_blank');
     });
 }
 
@@ -423,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupScrollIndicator();
     setupShareButtons();
     loadDonors();
-    setupPledgeModal();
+    setupPledgeButton();
 
     // Add loaded class to body for any CSS animations dependent on JS
     document.body.classList.add('loaded');
