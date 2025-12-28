@@ -261,6 +261,158 @@ function setupShareButtons() {
     }
 }
 
+// Donor list functionality
+// Google Sheets published as web page - using the gviz JSON endpoint
+const GOOGLE_SHEETS_ID = '2PACX-1vSUdY1Sv0MtyMsTQythm31NWoAlx5Wvb-82wdIow3UBqv_ahH-gbqfkiNXUkamCnr-O8ulkoDUGJGla';
+const GOOGLE_SHEETS_URL = `https://docs.google.com/spreadsheets/d/e/${GOOGLE_SHEETS_ID}/pub?gid=1978313953&single=true&output=csv`;
+const GOOGLE_FORM_URL = null; // Will be set after Google Form setup
+
+function formatCurrencyDisplay(amount) {
+    return '$' + parseInt(amount).toLocaleString();
+}
+
+// Parse CSV text into array of rows
+function parseCSV(text) {
+    const lines = text.trim().split('\n');
+    return lines.map(line => {
+        const result = [];
+        let current = '';
+        let inQuotes = false;
+
+        for (let i = 0; i < line.length; i++) {
+            const char = line[i];
+            if (char === '"') {
+                inQuotes = !inQuotes;
+            } else if (char === ',' && !inQuotes) {
+                result.push(current.trim());
+                current = '';
+            } else {
+                current += char;
+            }
+        }
+        result.push(current.trim());
+        return result;
+    });
+}
+
+async function loadDonors() {
+    const donorList = document.getElementById('donor-list');
+    const totalCommitted = document.getElementById('total-committed');
+
+    if (!donorList) return;
+
+    let donors = [];
+
+    // Try to load from Google Sheets first, fall back to local JSON
+    if (GOOGLE_SHEETS_URL) {
+        try {
+            const response = await fetch(GOOGLE_SHEETS_URL);
+            const csvText = await response.text();
+            const rows = parseCSV(csvText);
+
+            // Skip header row, columns are: Timestamp, Name, Amount
+            donors = rows.slice(1)
+                .filter(row => row[1] && row[1].trim()) // Filter out empty rows
+                .map(row => ({
+                    name: row[1], // Name is column B (index 1)
+                    amount: parseFloat(row[2]?.replace(/[$,]/g, '')) || 0 // Amount is column C (index 2)
+                }));
+        } catch (error) {
+            console.log('Could not load from Google Sheets, using local data', error);
+        }
+    }
+
+    // Fall back to local JSON if Google Sheets fails or isn't configured
+    if (donors.length === 0) {
+        try {
+            const response = await fetch('donors.json');
+            donors = await response.json();
+        } catch (error) {
+            console.log('Could not load donors.json');
+            donors = [
+                { name: "The Manns", amount: 1500 },
+                { name: "Arvin & Shelly", amount: 750 }
+            ];
+        }
+    }
+
+    // Render donor list
+    donorList.innerHTML = '';
+    let total = 0;
+
+    donors.forEach(donor => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${donor.name}</td>
+            <td>${formatCurrencyDisplay(donor.amount)}</td>
+        `;
+        donorList.appendChild(row);
+        total += donor.amount;
+    });
+
+    totalCommitted.textContent = formatCurrencyDisplay(total);
+}
+
+function setupPledgeModal() {
+    const pledgeBtn = document.getElementById('pledge-btn');
+    const modal = document.getElementById('pledge-modal');
+    const modalClose = document.getElementById('modal-close');
+    const pledgeForm = document.getElementById('pledge-form');
+
+    if (!pledgeBtn || !modal) return;
+
+    // Open modal
+    pledgeBtn.addEventListener('click', () => {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    // Close modal
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    // Handle form submission
+    pledgeForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('pledge-name').value.trim();
+        const amount = document.getElementById('pledge-amount').value;
+
+        // Confirmation dialog
+        const confirmed = confirm(
+            `You're pledging to donate ${formatCurrencyDisplay(amount)} annually through GiveWell.\n\n` +
+            `Your name "${name}" and commitment will be displayed on this page.\n\n` +
+            `Do you confirm this pledge?`
+        );
+
+        if (confirmed) {
+            if (GOOGLE_FORM_URL) {
+                // If Google Form is configured, submit there
+                // This would typically open the form or submit via API
+                window.open(GOOGLE_FORM_URL + `?name=${encodeURIComponent(name)}&amount=${encodeURIComponent(amount)}`, '_blank');
+            } else {
+                // For now, show instructions
+                alert(
+                    `Thank you for your pledge!\n\n` +
+                    `To complete your commitment:\n` +
+                    `1. Donate through GiveWell: secure.givewell.org\n` +
+                    `2. Email the site owner to add your name to the list\n\n` +
+                    `Your generosity will save lives!`
+                );
+            }
+            closeModal();
+            pledgeForm.reset();
+        }
+    });
+}
+
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     setupAnimations();
@@ -270,6 +422,8 @@ document.addEventListener('DOMContentLoaded', () => {
     setupSmoothScroll();
     setupScrollIndicator();
     setupShareButtons();
+    loadDonors();
+    setupPledgeModal();
 
     // Add loaded class to body for any CSS animations dependent on JS
     document.body.classList.add('loaded');

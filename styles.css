@@ -1373,3 +1373,198 @@ body {
 .live-counter {
     animation: pulse 2s infinite;
 }
+
+/* Donor Section */
+.donor-section {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    text-align: center;
+}
+
+.donor-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.donor-table-wrapper {
+    max-width: 400px;
+    margin: 0 auto 24px;
+}
+
+.donor-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255,255,255,0.15);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.donor-table th,
+.donor-table td {
+    padding: 12px 16px;
+    text-align: left;
+}
+
+.donor-table th {
+    background: rgba(255,255,255,0.1);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.donor-table td {
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.donor-table td:last-child,
+.donor-table th:last-child {
+    text-align: right;
+}
+
+.donor-table .total-row td {
+    background: rgba(42,157,143,0.3);
+    border-top: 2px solid rgba(255,255,255,0.3);
+}
+
+.btn-pledge {
+    background: var(--success);
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 16px;
+}
+
+.btn-pledge:hover {
+    background: #238b7e;
+    transform: translateY(-2px);
+}
+
+/* Modal Styles */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 450px;
+    width: 100%;
+    position: relative;
+    color: var(--text);
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-light);
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: var(--text);
+}
+
+.modal h3 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    color: var(--dark);
+}
+
+.modal > p {
+    margin-bottom: 24px;
+    color: var(--text-light);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--success);
+}
+
+.modal .btn-primary {
+    width: 100%;
+    background: var(--success);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.modal .btn-primary:hover {
+    background: #238b7e;
+}
+
+.modal-note {
+    margin-top: 16px;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.modal-note a {
+    color: var(--success);
+}
+
+/* Mobile adjustments for donor section */
+@media (max-width: 480px) {
+    .donor-section {
+        margin-top: 24px;
+        padding-top: 24px;
+    }
+
+    .donor-section h3 {
+        font-size: 1.2rem;
+    }
+
+    .donor-table th,
+    .donor-table td {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    .modal {
+        padding: 24px;
+    }
+
+    .modal h3 {
+        font-size: 1.3rem;
+    }
+}
